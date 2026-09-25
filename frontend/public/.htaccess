@@ -1,0 +1,10 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteRule ^(?:db|inc|lang|pages|videos|backend|frontend|deploy|doc|tests)(?:/|$) - [F,L,NC]
+RewriteRule (^|/)\. - [F,L]
+RewriteRule ^(?:actions/[a-z0-9-]+|media|thumb)\.php$ index.php [END]
+
+<FilesMatch "^(config|seed|.*-cli)\.php$">
+  Require all denied
+</FilesMatch>
