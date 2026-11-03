@@ -1,0 +1,13 @@
+Options -Indexes
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteRule ^(?:db|inc|lang|pages|videos|backend|frontend|deploy|doc|tests)(?:/|$) - [F,L,NC]
+RewriteRule (^|/)\. - [F,L]
+# Every address that is not a real public file is answered by the front controller.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [END]
+
+<FilesMatch "^(config|seed|.*-cli)\.php$">
+  Require all denied
+</FilesMatch>
